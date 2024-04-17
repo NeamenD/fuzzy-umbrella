@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Contact Explore Colorado</title>
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="no-js">
+    <div id="wrapper">
+      <header id="mainHeader">
+        <a href="#" title="home" class="logo">
+          <div id="logo">
+            <h1>Explore Colorado</h1>
+          </div>
+        </a>
+        <nav id="siteNav">
+          <h1>Where do you want to go?</h1>
+          <ul>
+            <li>
+              <a href="#" title="Our tours"
+                >Tours <br /><span class="tagline"
+                  >discover the Rockies</span
+                ></a
+              >
+            </li>
+            <li>
+              <a href="#" title="What we believe"
+                >Mission <br /><span class="tagline"
+                  >what sets us apart?</span
+                ></a
+              >
+            </li>
+            <li>
+              <a href="#" title="planning resources"
+                >Resources <br /><span class="tagline"
+                  >plan your adventure</span
+                ></a
+              >
+            </li>
+            <li>
+              <a href="#" title="Our community"
+                >Explorers <br /><span class="tagline"
+                  >join our community</span
+                ></a
+              >
+            </li>
+            <li>
+              <a href="#" title="contact us" class="current"
+                >Contact <br /><span class="tagline"
+                  >we're here to help</span
+                ></a
+              >
+              <ul>
+                <li><a href="#" title="need help?">Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <section id="mainContent">
+        <header id="contentHeader" class="hasCrumbs">
+          <h1>Contact Us</h1>
+          <div id="subLinks">
+            <ul>
+              <li><a href="#" title="need help?">Support</a></li>
+            </ul>
+          </div>
+        </header>
+
+        <form id="frmContact" name="frmContact">
+          <fieldset id="personalInfo">
+            <legend><strong>Personal Information</strong></legend>
+            <p>
+              <label for="name">Name<span class="required">*</span></label>
+              <input
+                name="name"
+                type="text"
+                class="text"
+                id="name"
+                tabindex="100"
+                placeholder="first and last name"
+                required
+              />
+            </p>
+            <p>
+              <label for="email">Email<span class="required">*</span></label>
+              <input
+                name="email"
+                type="email"
+                class="text"
+                id="email"
+                tabindex="110"
+                required
+              />
+            </p>
+            <p>
+              <label for="phone">Phone</label>
+              <input
+                name="phone"
+                type="tel"
+                class="text"
+                id="phone"
+                tabindex="130"
+              />
+            </p>
+            <p>
+              <label for="address">Address</label>
+              <input
+                name="address"
+                type="text"
+                class="text"
+                id="address"
+                tabindex="140"
+              />
+            </p>
+            <p>
+              <label for="city">City</label>
+              <input
+                name="city"
+                type="text"
+                class="text"
+                id="city"
+                tabindex="150"
+              />
+            </p>
+            <p>
+              <label for="state">State</label>
+              <input
+                name="state"
+                type="text"
+                class="text"
+                id="state"
+                tabindex="160"
+              />
+            </p>
+            <p>
+              <label for="zip">Zip Code</label>
+              <input
+                name="zip"
+                type="text"
+                class="text"
+                id="zip"
+                tabindex="170"
+              />
+            </p>
+          </fieldset>
+          <fieldset id="generalInfo">
+            <legend><strong>General Information</strong></legend>
+            <p>I would like more information about the following tours</p>
+            <div class="col1">
+              <p>
+                <input
+                  type="checkbox"
+                  name="mountains"
+                  id="mountains"
+                  tabindex="180"
+                />
+                <label for="mountains">Rocky Mountain Retreat</label>
+              </p>
+              <p>
+                <input
+                  type="checkbox"
+                  name="trails"
+                  id="trails"
+                  tabindex="190"
+                />
+                <label for="trails">Trailblazing Colorado</label>
+              </p>
+              <p>
+                <input type="checkbox" name="peaks" id="peaks" tabindex="200" />
+                <label for="peaks">Peak Expedition</label>
+              </p>
+            </div>
+            <div class="col2">
+              <p>
+                <input
+                  type="checkbox"
+                  name="rafting"
+                  id="rafting"
+                  tabindex="210"
+                />
+                <label for="rafting">River Rafting Adventure</label>
+              </p>
+              <p>
+                <input
+                  type="checkbox"
+                  name="wildlife"
+                  id="wildlife"
+                  tabindex="220"
+                />
+                <label for="wildlife">Wildlife Encounter</label>
+              </p>
+              <p>
+                <input
+                  type="checkbox"
+                  name="skiing"
+                  id="skiing"
+                  tabindex="230"
+                />
+                <label for="skiing">Ski Colorado</label>
+              </p>
+            </div>
+            <div class="col3">
+              <p>
+                <input
+                  type="checkbox"
+                  name="brewery"
+                  id="brewery"
+                  tabindex="240"
+                />
+                <label for="brewery">Brewery Tour</label>
+              </p>
+              <p>
+                <input
+                  type="checkbox"
+                  name="scenic"
+                  id="scenic"
+                  tabindex="250"
+                />
+                <label for="scenic">Scenic Byways</label>
+              </p>
+              <p>
+                <input
+                  type="checkbox"
+                  name="fishing"
+                  id="fishing"
+                  tabindex="260"
+                />
+                <label for="fishing">Fly Fishing Excursion</label>
+              </p>
+            </div>
+            <p class="clearBoth">
+              <label for="tripDate" class="inline"
+                >When are you thinking of touring?</label
+              ><br />
+              <input type="date" name="tripDate" id="tripDate" tabindex="265" />
+            </p>
+            <p class="clearBoth">
+              <label for="comments">Comments</label><br />
+              <textarea
+                name="comments2"
+                id="comments"
+                cols="45"
+                rows="5"
+                tabindex="270"
+              ></textarea>
+            </p>
+            <p>
+              Would you like to receive our monthly tour specials newsletter?
+              No, we don't spam or share your information with anyone else. Read
+              our <a href="#">privacy policy</a>.
+            </p>
+            <p>
+              <input
+                type="radio"
+                name="newsletter"
+                id="newsletter_yes"
+                value="yes"
+                tabindex="280"
+              />
+              <label for="newsletter_yes" class="inline break"
+                >Please send me the newsletter!</label
+              >
+              <input
+                type="radio"
+                name="newsletter"
+                id="newsletter_no"
+                value="no"
+                tabindex="290"
+                checked
+              />
+              <label for="newsletter_no" class="inline">No thanks!</label>
+            </p>
+            <p>
+              <input
+                type="button"
+                name="submit2"
+                id="submit2"
+                value="Send"
+                tabindex="300"
+              />
+            </p>
+          </fieldset>
+        </form>
+      </section>
+      <aside id="secondaryContent">
+        <div id="specials" class="callOut hidden">
+          <h1>National Park Spotlight</h1>
+          <h2 class="top">
+            <img
+              src="/img/kisspng-yellowstone-national-park-national-mall-alcatraz-i-5b676cb248af13.0081224715335046902977.jpg"
+              alt="National Park Service logo"
+              width="75"
+              height="75"
+            />
+            <a></a>
+          </h2>
+          <p></p>
+        </div>
+        <div id="trivia" class="callOut">
+          <h1>Did You Know?</h1>
+          <p>
+            Colorado is famous for its Rocky Mountains, offering various outdoor
+            activities such as hiking, skiing, and wildlife viewing.
+          </p>
+        </div>
+      </aside>
+      <footer id="pageFooter">
+        <section id="quickLinks">
+          <h1>Quick Nav</h1>
+          <ul id="quickNav">
+            <li><a href="#" title="Our home page">Home</a></li>
+            <li><a href="#" title="Explore our tours">Tours</a></li>
+            <li><a href="#" title="What we think">Mission</a></li>
+            <li><a href="#" title="Guidance and planning">Resources</a></li>
+            <li><a href="#" title="Join our community">Explorers</a></li>
+            <li><a href="#" title="Contact and support">Contact</a></li>
+          </ul>
+        </section>
+        <section id="footerResources">
+          <h1>Resources</h1>
+          <ul id="quickNav">
+            <li><a href="#" title="Our home page">FAQ</a></li>
+            <li><a href="#" title="Need help?">Support</a></li>
+            <li><a href="#" title="The fine print">Legal</a></li>
+          </ul>
+        </section>
+        <section id="companyInfo">
+          <h1>Contact</h1>
+          <h2>Explore Colorado</h2>
+          <p>
+            123 Rocky Road<br />
+            Denver, CO 80202
+          </p>
+          <p>866.555.5555<br />866.555.5556 <em>(24 hour support)</em></p>
+        </section>
+      </footer>
+    </div>
+    <script src="_scripts/app.js"></script>
+  </body>
+</html>
