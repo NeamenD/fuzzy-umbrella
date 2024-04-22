@@ -1,7 +1,5 @@
 "use strict";
-
 const smartyUrl = "";
-
 const parksUrl = "";
 
 const addressField = document.querySelector("#address");
@@ -13,8 +11,8 @@ const parkSection = document.querySelector("#specials");
 const parkName = document.querySelector("#specials h2 a");
 const parkDesc = document.querySelector("#specials p");
 
-const smartyUpdateUISuccess = function (data) {
-  const parsedData = JSON.parse(data);
+const smartyUpdateUISuccess = function (parsedData) {
+  // const parsedData = JSON.parse(data);
   //  console.log(parsedData);
   const zip = parsedData[0].components.zipcode;
   const plus4 = parsedData[0].components.plus4_code;
@@ -24,9 +22,11 @@ const smartyUpdateUISuccess = function (data) {
 const parkUpdateUISuccess = function (parsedData) {
   // const parsedData = JSON.parse(data);
   console.log(parsedData);
+
   const number = Math.floor(Math.random() * parsedData.data.length);
   parkName.textContent = parsedData.data[number].fullName;
   parkName.href = parsedData.data[number].url;
+  // parkDesc.remove();
   parkDesc.textContent = parsedData.data[number].description;
   parkThumb.src =
     "https://www.nps.gov/theme/assets/dist/images/branding/logo.png";
@@ -55,11 +55,18 @@ const parkUpdateUIError = function (error) {
 //   httpRequest.open('GET', url);
 //   httpRequest.send();
 // };
+const handleErrors = function (response) {
+  if (!response.ok) {
+    throw response.status + ": " + response.statusText;
+  }
+  return response.json();
+};
 
-const createRequest = function (url, succeed, fail) {
-  fetch(url)
-    .then((response) => response.json())
-    .then((data) => succeed(data));
+const createRequest = function (url, succeed, fail, init) {
+  fetch(url, init)
+    .then((response) => handleErrors(response))
+    .then((data) => succeed(data))
+    .catch((error) => fail(error));
 };
 
 const checkCompletion = function () {
@@ -76,7 +83,12 @@ const checkCompletion = function () {
       cityField.value +
       "&state=" +
       stateField.value;
-    createRequest(requestUrl, smartyUpdateUISuccess, smartyUpdateUIError);
+    createRequest(
+      requestUrl,
+      smartyUpdateUISuccess,
+      smartyUpdateUIError,
+      smartyInit
+    );
   }
 };
 //createRequest(smartyUrl);
