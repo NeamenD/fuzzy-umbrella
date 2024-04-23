@@ -1,25 +1,17 @@
 "use strict";
 
-// const smartyUrl =
-//   "https://us-street.api.smarty.com/street-address?key=196567255671291494&candidates=10&street=86%20Frontage%20Road&city=Belmont&state=MA";
-
-// working API
-// const smartyUrl =
-// //   "https://us-street.api.smartystreets.com/street-address?auth-id=196567255671291494&candidates=10";
 const smartyUrl =
   "https://us-street.api.smartystreets.com/street-address?auth-id=196567255671291494&candidates=10";
 
-// const smartyUrl =
-//   "https://ecoajaxproxy-c0f9cdbb0650.herokuapp.com/streets/street-address?";
 const smartyInit = {
+  method: "POST", // Specify the method as POST
   headers: {
     "Content-Type": "application/json",
     Host: "us-street.api.smartystreets.com",
   },
+  // Add a body if required
+  // body: JSON.stringify({ key: value }),
 };
-
-// const parksUrl =
-//   "https://developer.nps.gov/api/v1/parks?stateCode=ca&api_key=GgJP4QxmODJUoiQUGnDzBnGxvgDVsxm4jKgbSJpk";
 
 const parksUrl =
   "https://ecoajaxproxy-c0f9cdbb0650.herokuapp.com/nps/api/v1/parks?stateCode=ca";
@@ -34,49 +26,29 @@ const parkName = document.querySelector("#specials h2 a");
 const parkDesc = document.querySelector("#specials p");
 
 const smartyUpdateUISuccess = function (parsedData) {
-  // const parsedData = JSON.parse(data);
-  //  console.log(parsedData);
   const zip = parsedData[0].components.zipcode;
   const plus4 = parsedData[0].components.plus4_code;
-  //  console.log(zip + '-' + plus4);
   zipField.value = zip + "-" + plus4;
 };
-const parkUpdateUISuccess = function (parsedData) {
-  // const parsedData = JSON.parse(data);
-  console.log(parsedData);
 
+const parkUpdateUISuccess = function (parsedData) {
   const number = Math.floor(Math.random() * parsedData.data.length);
   parkName.textContent = parsedData.data[number].fullName;
   parkName.href = parsedData.data[number].url;
-  // parkDesc.remove();
   parkDesc.textContent = parsedData.data[number].description;
   parkThumb.src =
     "https://www.nps.gov/theme/assets/dist/images/branding/logo.png";
   parkSection.classList.remove("hidden");
 };
+
 const smartyUpdateUIError = function (error) {
   console.log(error);
 };
+
 const parkUpdateUIError = function (error) {
   console.log(error);
 };
 
-// const responseMethod = function(httpRequest, succeed, fail) {
-//   if (httpRequest.readyState === 4) {
-//     if (httpRequest.status === 200) {
-//       succeed(httpRequest.responseText);
-//     } else {
-//       fail(httpRequest.status + ': ' + httpRequest.responseText);
-//     }
-//   }
-// }
-
-// const createRequest = function(url, succeed, fail) {
-//   const httpRequest = new XMLHttpRequest(url);
-//   httpRequest.addEventListener('readystatechange', (url) => responseMethod(httpRequest, succeed, fail));
-//   httpRequest.open('GET', url);
-//   httpRequest.send();
-// };
 const handleErrors = function (response) {
   if (!response.ok) {
     throw response.status + ": " + response.statusText;
@@ -97,28 +69,23 @@ const checkCompletion = function () {
     cityField.value !== "" &&
     stateField.value !== ""
   ) {
-    const requestUrl =
-      smartyUrl +
-      "&street=" +
-      addressField.value +
-      "&city=" +
-      cityField.value +
-      "&state=" +
-      stateField.value;
-    createRequest(
-      requestUrl,
-      smartyUpdateUISuccess,
-      smartyUpdateUIError,
-      smartyInit
-    );
+    const requestData = {
+      street: addressField.value,
+      city: cityField.value,
+      state: stateField.value,
+    };
+    const init = {
+      ...smartyInit,
+      body: JSON.stringify(requestData),
+    };
+    createRequest(smartyUrl, smartyUpdateUISuccess, smartyUpdateUIError, init);
   }
 };
-//createRequest(smartyUrl);
-//createRequest(parksUrl, parkUpdateUISuccess, parkUpdateUIError);
 
 addressField.addEventListener("blur", checkCompletion);
 cityField.addEventListener("blur", checkCompletion);
 stateField.addEventListener("blur", checkCompletion);
+
 window.addEventListener("DOMContentLoaded", () => {
   createRequest(parksUrl, parkUpdateUISuccess, parkUpdateUIError);
 });
